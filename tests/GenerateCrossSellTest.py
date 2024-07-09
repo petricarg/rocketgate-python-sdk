@@ -44,6 +44,11 @@ class GenerateCrossSellTest(BaseTestCase):
         self.request.Set(GatewayRequest.USERNAME, "pythontest_user")
         self.request.Set(GatewayRequest.CUSTOMER_PASSWORD, "pythontest_pass")
 
+        # Risk/Scrub Request Setting
+        self.request.Set(GatewayRequest.SCRUB, "IGNORE")
+        self.request.Set(GatewayRequest.CVV2_CHECK, "IGNORE")
+        self.request.Set(GatewayRequest.AVS_CHECK, "IGNORE")
+
         # Perform the Purchase transaction
         self.assertTrue(
             self.service.PerformPurchase(self.request, self.response),

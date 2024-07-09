@@ -46,7 +46,7 @@ class NonRebillUpdateToRebillTest(BaseTestCase):
 
         self.request.Set(GatewayRequest.CARDNO, "4111111111111111")
         self.request.Set(GatewayRequest.EXPIRE_MONTH, "02")
-        self.request.Set(GatewayRequest.EXPIRE_YEAR, "2010")
+        self.request.Set(GatewayRequest.EXPIRE_YEAR, "2030")
         self.request.Set(GatewayRequest.CVV2, "999")
 
         # Risk/Scrub Request Setting

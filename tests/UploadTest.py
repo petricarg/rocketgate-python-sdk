@@ -38,7 +38,7 @@ class UploadTest(BaseTestCase):
 
         self.request.Set(GatewayRequest.CARDNO, "4111111111111111")
         self.request.Set(GatewayRequest.EXPIRE_MONTH, "12")
-        self.request.Set(GatewayRequest.EXPIRE_YEAR, "2012")
+        self.request.Set(GatewayRequest.EXPIRE_YEAR, "2030")
 
         self.request.Set(GatewayRequest.CUSTOMER_PASSWORD, "ThePassword")
 

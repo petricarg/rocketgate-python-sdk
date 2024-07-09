@@ -24,15 +24,31 @@ whether or not advised of the possibility of damage, regardless of the theory of
 """
 
 import unittest
-from BaseTestCase import BaseTestCase
 from RocketGate import GatewayRequest
+from RocketGate import GatewayResponse
+from RocketGate import GatewayService
 
 
-class ACHTest(BaseTestCase):
+class ACHTest(unittest.TestCase):
     def get_test_name(self) -> str:
         return "ACHTest"
 
     def test(self):
+        super().setUp()
+        self.service = GatewayService()
+        self.service.SetTestMode(True)
+        self.response = GatewayResponse()
+        self.request = GatewayRequest()
+
+        self.merchantId: int = 1
+        self.merchantPassword: str = 'testpassword'
+
+        # Merchant data
+        self.merchant_id = 1
+        self.merchant_password = 'testpassword'
+        self.request.Set(GatewayRequest.MERCHANT_ID, self.merchant_id)
+        self.request.Set(GatewayRequest.MERCHANT_PASSWORD, self.merchant_password)
+
         # Provide information about the customer.
         self.request.Set(GatewayRequest.CUSTOMER_FIRSTNAME, "Joe")
         self.request.Set(GatewayRequest.CUSTOMER_LASTNAME, "PythonTester")
@@ -41,6 +57,7 @@ class ACHTest(BaseTestCase):
         self.request.Set(GatewayRequest.BILLING_STATE, "NV")
         self.request.Set(GatewayRequest.BILLING_ZIPCODE, "89141")
         self.request.Set(GatewayRequest.BILLING_COUNTRY, "US")
+        self.request.Set(GatewayRequest.EMAIL, "pythontest@fakedomain.com")
         self.request.Set(GatewayRequest.IPADDRESS, "10.10.10.10")
 
         # Provide information about the purchase.

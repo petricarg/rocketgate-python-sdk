@@ -75,6 +75,11 @@ request.Set(GatewayRequest.EMAIL, "pythontest@fakedomain.com")
 request.Set(GatewayRequest.USERNAME, "pythontest_user")
 request.Set(GatewayRequest.CUSTOMER_PASSWORD, "pythontest_pass")
 
+# Risk/Scrub Request Setting
+request.request.Set(GatewayRequest.SCRUB, "IGNORE")
+request.request.Set(GatewayRequest.CVV2_CHECK, "IGNORE")
+request.request.Set(GatewayRequest.AVS_CHECK, "IGNORE")
+
 # Setup test mode parameters in service and request
 service.SetTestMode(True)
 

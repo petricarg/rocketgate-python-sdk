@@ -35,7 +35,7 @@ class BaseTestCase(unittest.TestCase):
         # Credit card data
         self.request.Set(GatewayRequest.CARDNO, "4111111111111111")
         self.request.Set(GatewayRequest.EXPIRE_MONTH, "02")
-        self.request.Set(GatewayRequest.EXPIRE_YEAR, "2010")
+        self.request.Set(GatewayRequest.EXPIRE_YEAR, "2030")
         self.request.Set(GatewayRequest.CVV2, "999")
 
         current_time = str(int(time.time()))
