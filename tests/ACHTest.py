@@ -24,28 +24,14 @@ whether or not advised of the possibility of damage, regardless of the theory of
 """
 
 import unittest
-from RocketGate import GatewayRequest
-from RocketGate import GatewayResponse
-from RocketGate import GatewayService
+from BaseTestCase import BaseTestCase
+from RocketGate import GatewayRequest, GatewayResponse, GatewayService
 
-
-class ACHTest(unittest.TestCase):
+class ACHTest(BaseTestCase):
     def get_test_name(self) -> str:
         return "ACHTest"
 
     def test(self):
-        super().setUp()
-        self.service = GatewayService()
-        self.service.SetTestMode(True)
-        self.response = GatewayResponse()
-        self.request = GatewayRequest()
-
-        # Merchant data
-        self.merchant_id = 1
-        self.merchant_password = 'testpassword'
-        self.request.Set(GatewayRequest.MERCHANT_ID, self.merchant_id)
-        self.request.Set(GatewayRequest.MERCHANT_PASSWORD, self.merchant_password)
-
         # Provide information about the customer.
         self.request.Set(GatewayRequest.CUSTOMER_FIRSTNAME, "Joe")
         self.request.Set(GatewayRequest.CUSTOMER_LASTNAME, "PythonTester")
