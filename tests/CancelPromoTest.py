@@ -67,8 +67,8 @@ class CancelPromoTest(BaseTestCase):
         #
 
         self.request = GatewayRequest()
-        self.request.Set(GatewayRequest.MERCHANT_ID, self.merchantId)
-        self.request.Set(GatewayRequest.MERCHANT_PASSWORD, self.merchantPassword)
+        self.request.Set(GatewayRequest.MERCHANT_ID, self.merchant_id)
+        self.request.Set(GatewayRequest.MERCHANT_PASSWORD, self.merchant_password)
 
         self.request.Set(GatewayRequest.MERCHANT_CUSTOMER_ID, self.customer_id)
         self.request.Set(GatewayRequest.MERCHANT_INVOICE_ID, self.invoice_id)

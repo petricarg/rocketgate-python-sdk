@@ -62,8 +62,8 @@ class CancelTest(BaseTestCase):
         # but for example's sake is in one process (thus we clear and set a new GatewayRequest object)
         # The key values required are MERCHANT_CUSTOMER_ID and MERCHANT_INVOICE_ID.
         request = GatewayRequest()
-        request.Set(GatewayRequest.MERCHANT_ID, self.merchantId)
-        request.Set(GatewayRequest.MERCHANT_PASSWORD, self.merchantPassword)
+        request.Set(GatewayRequest.MERCHANT_ID, self.merchant_id)
+        request.Set(GatewayRequest.MERCHANT_PASSWORD, self.merchant_password)
 
         request.Set(GatewayRequest.MERCHANT_CUSTOMER_ID, self.customer_id)
         request.Set(GatewayRequest.MERCHANT_INVOICE_ID, self.invoice_id)

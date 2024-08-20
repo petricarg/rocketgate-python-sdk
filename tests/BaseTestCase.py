@@ -18,9 +18,6 @@ class BaseTestCase(unittest.TestCase):
         self.response = GatewayResponse()
         self.request = GatewayRequest()
 
-        self.merchantId: int = 1
-        self.merchantPassword: str = 'testpassword'
-
         # Merchant data
         self.merchant_id = 1
         self.merchant_password = 'testpassword'

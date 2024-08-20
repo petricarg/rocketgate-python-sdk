@@ -44,11 +44,6 @@ class ThreeDSecureTwoTest(BaseTestCase):
         self.request.Set(GatewayRequest.CURRENCY, "USD")
         self.request.Set(GatewayRequest.AMOUNT, "9.99")
 
-        self.request.Set(GatewayRequest.CARDNO, "4000000000001091")
-        self.request.Set(GatewayRequest.EXPIRE_MONTH, "01")
-        self.request.Set(GatewayRequest.EXPIRE_YEAR, "2030")
-        self.request.Set(GatewayRequest.CVV2, "999")
-
         self.request.Set(GatewayRequest.CUSTOMER_FIRSTNAME, "Joe")
         self.request.Set(GatewayRequest.CUSTOMER_LASTNAME, "PythonTester")
         self.request.Set(GatewayRequest.EMAIL, "pythontest@fakedomain.com")
