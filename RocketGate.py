@@ -966,7 +966,7 @@ class GatewayService:
         return self.PerformTransaction(request, response)  # Return results
 
     def PerformLookup(self, request, response):
-        """Performs GUID lookup"""
+        """Performs Lookup request"""
 
         request.Set(GatewayRequest.TRANSACTION_TYPE, "LOOKUP")
         referenceGUID = request.Get(GatewayRequest.REFERENCE_GUID)
