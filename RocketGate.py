@@ -709,7 +709,7 @@ class GatewayService:
         else:
             try:
                 if self.rocketGateHost != GatewayService.LIVE_HOST:
-                    server_list = [self.TEST_HOST]
+                    server_list = [self.rocketGateHost]
                 else:
                     server_list = socket.gethostbyname_ex(self.rocketGateHost)[2]
             except socket.gaierror:
