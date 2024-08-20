@@ -32,6 +32,11 @@ class ACHTest(BaseTestCase):
         return "ACHTest"
 
     def test(self):
+        self.request.Clear(GatewayRequest.CARDNO)
+        self.request.Clear(GatewayRequest.EXPIRE_MONTH)
+        self.request.Clear(GatewayRequest.EXPIRE_YEAR)
+        self.request.Clear(GatewayRequest.CVV2)
+
         # Provide information about the customer.
         self.request.Set(GatewayRequest.CUSTOMER_FIRSTNAME, "Joe")
         self.request.Set(GatewayRequest.CUSTOMER_LASTNAME, "PythonTester")
