@@ -685,7 +685,13 @@ class GatewayService:
         #
         #	If EMBEDDED_FIELDS_TOKEN is provided, send the request to the corresponding endpoint
         #
-        fullUrl = request.Get(GatewayRequest.EMBEDDED_FIELDS_TOKEN)
+        fullUrl = request.Get(GatewayRequest.GATEWAY_URL)
+        if fullUrl is None:
+            if request.Get(GatewayRequest.PAYMENT_LINK_TOKEN) is not None:
+                fullUrl = request.Get(GatewayRequest.PAYMENT_LINK_TOKEN)
+            elif request.Get(GatewayRequest.EMBEDDED_FIELDS_TOKEN) is not None:
+                fullUrl = request.Get(GatewayRequest.EMBEDDED_FIELDS_TOKEN)
+
         if fullUrl is not None:
             try:
                 parsedUrl = urlsplit(fullUrl)
