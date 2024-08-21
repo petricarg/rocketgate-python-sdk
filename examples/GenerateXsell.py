@@ -36,7 +36,7 @@ Example $3.00 3x day trial rebills to $9.99 monthly.
 """
 
 # Setup required and testing variables
-time_now = int(time.time())
+time_now = time.time()
 cust_id = f"{time_now}.PythonTest"
 inv_id = f"{time_now}.TestGenerateXsell"
 merchant_id = "1"
@@ -76,9 +76,9 @@ request.Set(GatewayRequest.USERNAME, "pythontest_user")
 request.Set(GatewayRequest.CUSTOMER_PASSWORD, "pythontest_pass")
 
 # Risk/Scrub Request Setting
-request.request.Set(GatewayRequest.SCRUB, "IGNORE")
-request.request.Set(GatewayRequest.CVV2_CHECK, "IGNORE")
-request.request.Set(GatewayRequest.AVS_CHECK, "IGNORE")
+request.Set(GatewayRequest.SCRUB, "IGNORE")
+request.Set(GatewayRequest.CVV2_CHECK, "IGNORE")
+request.Set(GatewayRequest.AVS_CHECK, "IGNORE")
 
 # Setup test mode parameters in service and request
 service.SetTestMode(True)

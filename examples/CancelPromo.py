@@ -36,7 +36,7 @@ is modified to a USD $25.95 quarterly effective on it's next rebill date.
 """
 
 # Setup required and testing variables
-time_now = int(time.time())
+time_now = time.time()
 cust_id = f"{time_now}.PythonTest"
 inv_id = f"{time_now}.CancelPromoTest"
 merchant_id = "1"

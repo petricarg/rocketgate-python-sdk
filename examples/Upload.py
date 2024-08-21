@@ -27,9 +27,9 @@ import sys
 import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from RocketGate import *
-import datetime
+import time
 
-the_time = datetime.datetime.now().strftime("%Y%m%d.%H%M%S")
+the_time = str(time.time())
 
 cust_id = the_time + ".UploadCardTest"
 merch_id = "1"
@@ -57,8 +57,8 @@ request.Set(GatewayRequest.BILLING_STATE, "Nevada")
 request.Set(GatewayRequest.BILLING_ZIPCODE, "89141")
 request.Set(GatewayRequest.BILLING_COUNTRY, "US")
 
-request.Set(GatewayRequest.CUSTOMER_FIRSTNAME, "Monty")
-request.Set(GatewayRequest.CUSTOMER_LASTNAME, "Python")
+request.Set(GatewayRequest.CUSTOMER_FIRSTNAME, "Joe")
+request.Set(GatewayRequest.CUSTOMER_LASTNAME, "PythonTester")
 request.Set(GatewayRequest.CUSTOMER_PASSWORD, "ThePassword")
 request.Set(GatewayRequest.EMAIL, "python_user@rocketgate.com")
 
@@ -68,7 +68,7 @@ request.Set(GatewayRequest.EMAIL, "python_user@rocketgate.com")
 service.SetTestMode(1)
 
 #
-#      Perform the Purchase transaction.
+#      Perform Card Upload
 #
 
 if service.PerformCardUpload(request, response):

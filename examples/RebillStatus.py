@@ -23,14 +23,14 @@ including, without limitation, damages resulting from loss of use, data or profi
 whether or not advised of the possibility of damage, regardless of the theory of liability.
 """
 
-import datetime
+import time
 import sys
 import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from RocketGate import *
 
 # Setup a couple required and testing variables
-the_time = datetime.datetime.now().strftime("%Y%m%d.%H%M%S")
+the_time = time.time()
 cust_id = f"{the_time}.PythonTest"
 inv_id = f"{the_time}.RebillStatusTest"
 merch_id = "1"
@@ -93,14 +93,14 @@ if service.PerformPurchase(request, response):
 
     status = service.PerformRebillUpdate(request, response)
     if status:
-        print("2. User is Active and Set to Rebill")
-
         rebill_end_date = response.Get(GatewayResponse.REBILL_END_DATE)
 
         if rebill_end_date is None:
+            print("2. User is Active and Set to Rebill")
             print(" Rebill Date:", response.Get(GatewayResponse.REBILL_DATE))
 
         else:
+            print("2. User is Active and Set to Cancel")
             print(" Cancel Date:", rebill_end_date)
 
         print(" Join Date:", response.Get(GatewayResponse.JOIN_DATE))

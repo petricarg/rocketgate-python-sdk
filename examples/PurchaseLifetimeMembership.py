@@ -39,7 +39,7 @@ request.Set(GatewayRequest.MERCHANT_ID, "1")
 request.Set(GatewayRequest.MERCHANT_PASSWORD, "testpassword")
 
 # For example/testing, set the order ID and customer as the Unix timestamp for sequencing
-time = int(time.time())
+time = time.time()
 request.Set(GatewayRequest.MERCHANT_CUSTOMER_ID, str(time) + '.PythonTest')
 request.Set(GatewayRequest.MERCHANT_INVOICE_ID, str(time) + '.LifeTest')
 

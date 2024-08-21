@@ -39,7 +39,7 @@ request.Set(GatewayRequest.MERCHANT_ID, "1")
 request.Set(GatewayRequest.MERCHANT_PASSWORD, "testpassword")
 
 # For example/testing, set the order ID and customer as the Unix timestamp for sequencing
-time = int(time.time())
+time = time.time()
 request.Set(GatewayRequest.MERCHANT_CUSTOMER_ID, str(time) + '.PythonTest')
 request.Set(GatewayRequest.MERCHANT_INVOICE_ID, str(time) + '.LifeTest')
 
@@ -78,8 +78,6 @@ if service.PerformPurchase(request, response):
     print("Response Code:", response.Get(GatewayResponse.RESPONSE_CODE))
     print("Reason Code:", response.Get(GatewayResponse.REASON_CODE))
     print("GUID:", response.Get(GatewayResponse.TRANSACT_ID))
-    print("Customer ID:", request.Get(GatewayRequest.MERCHANT_CUSTOMER_ID))
-    print("Invoice ID:", request.Get(GatewayRequest.MERCHANT_INVOICE_ID))
 
 else:
     print("Purchase failed")

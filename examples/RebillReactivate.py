@@ -29,13 +29,13 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 from RocketGate import *
 
 """
-Reactivate canceled subscription example.
+Reactivate cancelled subscription example.
 """
 
 # Reactivate canceled subscription example
 # MERCHANT_CUSTOMER_ID and MERCHANT_INVOICE_ID associated with the subscription
-cust_id = '1719399363.PythonTest'
-inv_id = '1719399363.LifeTest'
+cust_id = "Client.1657710404894"
+inv_id = "Invoice.1657710404894"
 merchant_id = "1"
 merchant_password = "testpassword"
 

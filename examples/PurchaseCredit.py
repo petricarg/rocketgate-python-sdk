@@ -30,9 +30,9 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 from RocketGate import *
 
 # Setup required and testing variables
-time = int(time.time())
-cust_id = str(time) + '.PythonTest'
-inv_id = str(time) + '.CreditTest'
+time = str(time.time())
+cust_id = time + '.PythonTest'
+inv_id = time + '.CreditTest'
 merchant_id = "1"
 merchant_password = "testpassword"
 

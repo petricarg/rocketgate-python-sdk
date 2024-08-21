@@ -40,7 +40,7 @@ and set the monthly rebill cycle starting today.
 """
 
 # Setup required and testing variables
-time_now = int(time.time())
+time_now = time.time()
 cust_id = f"{time_now}.PythonTest"
 inv_id = f"{time_now}.InstUpgrdTest"
 merchant_id = "1"

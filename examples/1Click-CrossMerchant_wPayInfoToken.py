@@ -37,7 +37,7 @@ Subsequently, the user wants to make another $8.99 purchase using the card on fi
 
 current_time = int(time.time())
 cust_id = f"{current_time}.PythonTest"
-inv_id = f"{current_time}.CardHashTest"
+inv_id = f"{current_time}.PayInfoTest"
 
 merchant_id = "1"
 merchant_password = "testpassword"
@@ -119,7 +119,9 @@ if service.PerformPurchase(request, response):
 
     if service.PerformPurchase(request, response):
         print("1Click Purchase succeeded")
-        print(response)
+        print("GUID:", response.Get(GatewayResponse.TRANSACT_ID))
+        print("Response Code:", response.Get(GatewayResponse.RESPONSE_CODE))
+        print("Reason Code:", response.Get(GatewayResponse.REASON_CODE))
     else:
         print("1Click Purchase failed")
         print("Reason Code:", response.Get(GatewayResponse.REASON_CODE))

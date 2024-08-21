@@ -100,7 +100,6 @@ if service.PerformAuthOnly(request, response):
 
         # Create a new request to use the scheme transactionId and settlementDate of the original transaction to create an Xsell transaction
         request = GatewayRequest()
-        service = GatewayService()
 
         request.Set(GatewayRequest.MERCHANT_ID, "1")
         request.Set(GatewayRequest.MERCHANT_PASSWORD, "testpassword")

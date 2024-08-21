@@ -39,7 +39,7 @@ request.Set(GatewayRequest.MERCHANT_ID, "1")
 request.Set(GatewayRequest.MERCHANT_PASSWORD, "testpassword")
 
 # Setting the order ID and customer as the Unix timestamp for sequencing
-time = int(time.time())
+time = time.time()
 cust_id = f"{time}.PythonTest"
 inv_id = f"{time}.RebillStatusTest"
 
@@ -75,6 +75,13 @@ if service.PerformPurchase(request, response):
     print("1. Purchase succeeded")
 
     # Cancel Rebill
+    request = GatewayRequest()
+    request.Set(GatewayRequest.MERCHANT_ID, "1")
+    request.Set(GatewayRequest.MERCHANT_PASSWORD, "testpassword")
+
+    request.Set(GatewayRequest.MERCHANT_CUSTOMER_ID, cust_id)
+    request.Set(GatewayRequest.MERCHANT_INVOICE_ID, inv_id)
+
     if service.PerformRebillCancel(request, response):
         print("2. Cancel Successful")
 
@@ -88,10 +95,10 @@ if service.PerformPurchase(request, response):
         if service.PerformRebillUpdate(status_request, response):
             if response.Get(GatewayResponse.REBILL_END_DATE) is None:
                 print("3. User is Active and Set to Rebill")
-                print("  Rebill Date:", response.Get(GatewayResponse.REBILL_DATE))
+                print("   Rebill Date:", response.Get(GatewayResponse.REBILL_DATE))
             else:
                 print("3. User is Active and Set to Cancel")
-                print("  Cancel Date:", response.Get(GatewayResponse.REBILL_END_DATE))
+                print("   Cancel Date:", response.Get(GatewayResponse.REBILL_END_DATE))
         else:
             if response.Get(GatewayResponse.REASON_CODE) == GatewayCodes.REASON_NO_ACTIVE_MEMBERSHIP:
                 print("3. Subscription Canceled")
@@ -99,7 +106,7 @@ if service.PerformPurchase(request, response):
                 print("3. Subscription Not Found")
             else:
                 print("3. Status Check Failed")
-            print("  Reason Code:", response.Get(GatewayResponse.REASON_CODE))
+                print("   Reason Code:", response.Get(GatewayResponse.REASON_CODE))
     else:
         print("2. Cancel failed")
 else:

@@ -53,7 +53,7 @@ class LookupTest(BaseTestCase):
             "Perform Auth Only"
         )
 
-        # Run additional purchase using MERCHANT_INVOICE_ID
+        # Prepare new gateway request for lookup
         # This would normally be two separate processes,
         # but for example's sake is in one process (thus we clear and set a new GatewayRequest object)
         # The key values required is MERCHANT_INVOICE_ID

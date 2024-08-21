@@ -23,13 +23,13 @@ including, without limitation, damages resulting from loss of use, data or profi
 whether or not advised of the possibility of damage, regardless of the theory of liability.
 """
 
-import datetime
+import time
 import sys
 import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from RocketGate import *
 
-the_time = datetime.datetime.now().strftime("%Y%m%d.%H%M%S")
+the_time = str(time.time())
 
 cust_id = the_time + ".PythonTest"
 inv_id = the_time + ".AuthTest"
@@ -63,8 +63,8 @@ request.Set(GatewayRequest.BILLING_STATE, "Nevada")
 request.Set(GatewayRequest.BILLING_ZIPCODE, "89141")
 request.Set(GatewayRequest.BILLING_COUNTRY, "US")
 
-request.Set(GatewayRequest.CUSTOMER_FIRSTNAME, "Monty")
-request.Set(GatewayRequest.CUSTOMER_LASTNAME, "Python")
+request.Set(GatewayRequest.CUSTOMER_FIRSTNAME, "Joe")
+request.Set(GatewayRequest.CUSTOMER_LASTNAME, "PythonTester")
 request.Set(GatewayRequest.EMAIL, "python_user@rocketgate.com")
 request.Set(GatewayRequest.IPADDRESS, "68.224.133.117")
 

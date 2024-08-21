@@ -35,7 +35,7 @@ Subsequently, modify to a USD $19.95 monthly.. effective on it's next rebill dat
 """
 
 # Setup required and testing variables
-time_now = int(time.time())
+time_now = time.time()
 cust_id = f"{time_now}.PythonTest"
 inv_id = f"{time_now}.UpgrdToRebillTest"
 merchant_id = "1"
@@ -86,7 +86,7 @@ service.SetTestMode(True)
 # Perform the Purchase transaction
 if service.PerformPurchase(request, response):
     print("1. Non-recurring join succeeded")
-    print("  GUID:", response.Get(GatewayResponse.TRANSACT_ID))
+    print("   GUID:", response.Get(GatewayResponse.TRANSACT_ID))
 
     # Upgrade Membership
     request = GatewayRequest()
@@ -102,17 +102,17 @@ if service.PerformPurchase(request, response):
 
     if service.PerformRebillUpdate(request, response):
         print("2. Update to Recurring succeeded")
-        print("  GUID:", response.Get(GatewayResponse.TRANSACT_ID))
-        print("  Rebill Date:", response.Get(GatewayResponse.REBILL_DATE))
-        print("  Cancel Date:", response.Get(GatewayResponse.REBILL_END_DATE))
+        print("   GUID:", response.Get(GatewayResponse.TRANSACT_ID))
+        print("   Rebill Date:", response.Get(GatewayResponse.REBILL_DATE))
+        print("   Cancel Date:", response.Get(GatewayResponse.REBILL_END_DATE))
     else:
         print("2. Update to Recurring failed")
-        print("  Response Code:", response.Get(GatewayResponse.RESPONSE_CODE))
-        print("  Cancel Date:", response.Get(GatewayResponse.REBILL_END_DATE))
+        print("   Response Code:", response.Get(GatewayResponse.RESPONSE_CODE))
+        print("   Cancel Date:", response.Get(GatewayResponse.REBILL_END_DATE))
 
 else:
     print("1. Non-recurring join failed")
-    print("GUID:", response.Get(GatewayResponse.TRANSACT_ID))
-    print("Response Code:", response.Get(GatewayResponse.RESPONSE_CODE))
-    print("Reason Code:", response.Get(GatewayResponse.REASON_CODE))
-    print("Exception:", response.Get(GatewayResponse.EXCEPTION))
+    print("   GUID:", response.Get(GatewayResponse.TRANSACT_ID))
+    print("   Response Code:", response.Get(GatewayResponse.RESPONSE_CODE))
+    print("   Reason Code:", response.Get(GatewayResponse.REASON_CODE))
+    print("   Exception:", response.Get(GatewayResponse.EXCEPTION))
