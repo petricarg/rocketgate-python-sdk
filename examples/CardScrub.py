@@ -28,14 +28,14 @@ import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from RocketGate import *
 
-cust_id = "Customer-1"
+cust_id = "CardScrubTest"
 
 request = GatewayRequest()
 response = GatewayResponse()
 service = GatewayService()
 
 #
-#	Setup the Purchase request.
+#	Setup the CardScrub request.
 #
 request.Set(GatewayRequest.MERCHANT_ID, 1)
 request.Set(GatewayRequest.MERCHANT_PASSWORD, "testpassword")
@@ -46,11 +46,11 @@ request.Set(GatewayRequest.CARDNO, "4111111111111111")
 
 request.Set(GatewayRequest.BILLING_ADDRESS, "123 Some Street")
 request.Set(GatewayRequest.BILLING_CITY, "Las Vegas")
-request.Set(GatewayRequest.BILLING_STATE, "Nevada")
+request.Set(GatewayRequest.BILLING_STATE, "NV")
 request.Set(GatewayRequest.BILLING_ZIPCODE, "89141")
 request.Set(GatewayRequest.BILLING_COUNTRY, "US")
 
-request.Set(GatewayRequest.EMAIL, "python_user@rocketgate.com")
+request.Set(GatewayRequest.EMAIL, "python_user@fakedomain.com")
 request.Set(GatewayRequest.IPADDRESS, "68.224.133.117")
 
 #

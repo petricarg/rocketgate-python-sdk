@@ -36,7 +36,7 @@ Subsequently, the user wants to make another $8.99 purchase using the card on fi
 
 class OneClickCrossMerchantWithPayInfoTokenTest(BaseTestCase):
     def get_test_name(self) -> str:
-        return "1CWPayInfoTest"
+        return "PayInfoTest"
 
     def test(self):
         merchant_id_1c = "1256059862"

@@ -36,7 +36,7 @@ Example $3.00 3x day trial rebills to $9.99 monthly.
 """
 
 # Setup required and testing variables
-time_now = time.time()
+time_now = int(time.time())
 cust_id = f"{time_now}.PythonTest"
 inv_id = f"{time_now}.TestGenerateXsell"
 merchant_id = "1"
@@ -75,11 +75,6 @@ request.Set(GatewayRequest.EMAIL, "pythontest@fakedomain.com")
 request.Set(GatewayRequest.USERNAME, "pythontest_user")
 request.Set(GatewayRequest.CUSTOMER_PASSWORD, "pythontest_pass")
 
-# Risk/Scrub Request Setting
-request.Set(GatewayRequest.SCRUB, "IGNORE")
-request.Set(GatewayRequest.CVV2_CHECK, "IGNORE")
-request.Set(GatewayRequest.AVS_CHECK, "IGNORE")
-
 # Setup test mode parameters in service and request
 service.SetTestMode(True)
 
@@ -99,7 +94,6 @@ if service.PerformPurchase(request, response):
     # Different invoice id for xsell
     inv_id = f"{time_now + 1}.TestGenerateXsell"
     request.Set(GatewayRequest.MERCHANT_INVOICE_ID, inv_id)
-    request.Set(GatewayRequest.XSELL_REFERENCE_XACT, response.Get(GatewayResponse.TRANSACT_ID))
 
     # Generate CrossSale
     request.Set(GatewayRequest.CURRENCY, "USD")

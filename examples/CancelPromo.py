@@ -36,7 +36,7 @@ is modified to a USD $25.95 quarterly effective on it's next rebill date.
 """
 
 # Setup required and testing variables
-time_now = time.time()
+time_now = int(time.time())
 cust_id = f"{time_now}.PythonTest"
 inv_id = f"{time_now}.CancelPromoTest"
 merchant_id = "1"
@@ -81,6 +81,8 @@ request.Set(GatewayRequest.BILLING_COUNTRY, "US")
 
 # Risk/Scrub Request Setting
 request.Set(GatewayRequest.SCRUB, "IGNORE")
+request.Set(GatewayRequest.CVV2_CHECK, "IGNORE")
+request.Set(GatewayRequest.AVS_CHECK, "IGNORE")
 
 # Set test mode in service and request
 service.SetTestMode(True)

@@ -30,7 +30,7 @@ from RocketGate import GatewayRequest, GatewayResponse
 
 class OneClickCrossMerchantWithCardHashTest(BaseTestCase):
     def get_test_name(self) -> str:
-        return "1CWitCHashTest"
+        return "CardHashTest"
 
     def test(self):
         merchant_id_1c = "1256059862"

@@ -39,9 +39,12 @@ request.Set(GatewayRequest.MERCHANT_ID, "1")
 request.Set(GatewayRequest.MERCHANT_PASSWORD, "testpassword")
 
 # Generating customer and invoice IDs based on the current time
-time_now = time.time()
+time_now = int(time.time())
 customer_id = f"{time_now}.PythonTest"
 invoice_id = f"{time_now}.SaleTest"
+
+request.Set(GatewayRequest.MERCHANT_CUSTOMER_ID, customer_id)
+request.Set(GatewayRequest.MERCHANT_INVOICE_ID, invoice_id)
 
 # Provide customer information
 request.Set(GatewayRequest.CUSTOMER_FIRSTNAME, "Joe")

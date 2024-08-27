@@ -29,7 +29,7 @@ import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from RocketGate import *
 
-the_time = str(time.time())
+the_time = str(int(time.time()))
 
 cust_id = the_time + ".PythonTest"
 inv_id = the_time + ".CancelTest"
@@ -62,21 +62,23 @@ request.Set(GatewayRequest.CARDNO, "4111111111111111")
 request.Set(GatewayRequest.EXPIRE_MONTH, "02")
 request.Set(GatewayRequest.EXPIRE_YEAR, "2030")
 request.Set(GatewayRequest.CVV2, "999")
-request.Set(GatewayRequest.CVV2_CHECK, "IGNORE")
 
-request.Set(GatewayRequest.BILLING_ADDRESS, "123 Some Street")
+
+request.Set(GatewayRequest.BILLING_ADDRESS, "123 Main St")
 request.Set(GatewayRequest.BILLING_CITY, "Las Vegas")
-request.Set(GatewayRequest.BILLING_STATE, "Nevada")
+request.Set(GatewayRequest.BILLING_STATE, "NV")
 request.Set(GatewayRequest.BILLING_ZIPCODE, "89141")
 request.Set(GatewayRequest.BILLING_COUNTRY, "US")
-request.Set(GatewayRequest.AVS_CHECK, "IGNORE")
+
 
 request.Set(GatewayRequest.CUSTOMER_FIRSTNAME, "Joe")
 request.Set(GatewayRequest.CUSTOMER_LASTNAME, "PythonTester")
-request.Set(GatewayRequest.EMAIL, "python_user@rocketgate.com")
-request.Set(GatewayRequest.IPADDRESS, "68.224.133.117")
+request.Set(GatewayRequest.EMAIL, "python_user@fakedomain.com")
+request.Set(GatewayRequest.USERNAME, "pythontest_user")
 
 request.Set(GatewayRequest.SCRUB, "IGNORE")
+request.Set(GatewayRequest.CVV2_CHECK, "IGNORE")
+request.Set(GatewayRequest.AVS_CHECK, "IGNORE")
 
 #
 #      Setup test parameters in the service.
@@ -119,6 +121,7 @@ if status:
 
     if status:
         print("Cancel succeeded")
+        # TODO missing code
     else:
         print("Cancel failed")
         print("Response Code: ", response.Get(GatewayResponse.RESPONSE_CODE))

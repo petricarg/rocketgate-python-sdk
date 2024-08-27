@@ -66,7 +66,7 @@ request.Set(GatewayRequest.CURRENCY, "USD")
 request.Set(GatewayRequest.AMOUNT, 9.99)  # bill 9.99
 
 request.Set(GatewayRequest.CARDNO, "4111111111111111")
-request.Set(GatewayRequest.EXPIRE_MONTH, "12")
+request.Set(GatewayRequest.EXPIRE_MONTH, "02")
 request.Set(GatewayRequest.EXPIRE_YEAR, "2030")
 request.Set(GatewayRequest.CVV2, "999")
 

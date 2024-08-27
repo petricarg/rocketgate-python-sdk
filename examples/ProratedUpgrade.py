@@ -39,7 +39,7 @@ Example Scenario:
 """
 
 # Setup required and testing variables
-time_now = time.time()
+time_now = int(time.time())
 cust_id = f"{time_now}.PythonTest"
 inv_id = f"{time_now}.ProRtUpgrdTest"
 merchant_id = "1"

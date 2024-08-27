@@ -30,7 +30,7 @@ from RocketGate import GatewayRequest
 
 class PurchaseLifetimeMembershipTest(BaseTestCase):
     def get_test_name(self) -> str:
-        return "PurLifeMemTest"
+        return "LifeTest"
 
     def test(self):
         # $99.99 Lifetime Membership

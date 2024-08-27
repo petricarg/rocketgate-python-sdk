@@ -50,7 +50,6 @@ class PurchaseCreditTest(BaseTestCase):
         self.request.Set(GatewayRequest.AVS_CHECK, "IGNORE")
 
         # Setup test parameters in the service and request
-        self.service.SetTestMode(True)
 
         # Perform the Purchase transaction
         self.assertTrue(
