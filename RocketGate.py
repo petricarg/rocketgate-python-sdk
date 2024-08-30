@@ -207,7 +207,8 @@ class GatewayRequest:
         """Sets a value in the parameter list."""
 
         self.Clear(key)  # Have key value? Delete it
-        self.parameterList[key] = str(value)  # Save the value
+        if value is not None:
+            self.parameterList[key] = str(value)  # Save the value
 
     def Clear(self, key):
         """Clears a value in the parameter list."""
@@ -378,7 +379,8 @@ class GatewayResponse(xml.sax.handler.ContentHandler):
 
         if key in self.parameterList:  # Have key value?
             del self.parameterList[key]  # Delete it
-        self.parameterList[key] = str(value)  # Save the value
+        if value is not None:
+            self.parameterList[key] = str(value)  # Save the value
 
     def Reset(self):
         """Clears all elements in a response."""

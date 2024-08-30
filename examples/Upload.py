@@ -29,7 +29,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 from RocketGate import *
 import time
 
-the_time = str(time.time())
+the_time = str(int(time.time()))
 
 cust_id = the_time + ".UploadCardTest"
 merch_id = "1"
@@ -47,20 +47,20 @@ request.Set(GatewayRequest.MERCHANT_PASSWORD, merch_password)
 
 request.Set(GatewayRequest.MERCHANT_CUSTOMER_ID, cust_id)
 
-request.Set(GatewayRequest.CARDNO, "4000000000001091")
-request.Set(GatewayRequest.EXPIRE_MONTH, "02")
+request.Set(GatewayRequest.CARDNO, "4111111111111111")
+request.Set(GatewayRequest.EXPIRE_MONTH, "12")
 request.Set(GatewayRequest.EXPIRE_YEAR, "2030")
 
-request.Set(GatewayRequest.BILLING_ADDRESS, "123 Some Street")
+request.Set(GatewayRequest.BILLING_ADDRESS, "123 Main St")
 request.Set(GatewayRequest.BILLING_CITY, "Las Vegas")
-request.Set(GatewayRequest.BILLING_STATE, "Nevada")
+request.Set(GatewayRequest.BILLING_STATE, "NV")
 request.Set(GatewayRequest.BILLING_ZIPCODE, "89141")
 request.Set(GatewayRequest.BILLING_COUNTRY, "US")
 
 request.Set(GatewayRequest.CUSTOMER_FIRSTNAME, "Joe")
 request.Set(GatewayRequest.CUSTOMER_LASTNAME, "PythonTester")
 request.Set(GatewayRequest.CUSTOMER_PASSWORD, "ThePassword")
-request.Set(GatewayRequest.EMAIL, "python_user@rocketgate.com")
+request.Set(GatewayRequest.EMAIL, "python_user@fakedomain.com")
 
 #
 #      Setup test parameters in the service.

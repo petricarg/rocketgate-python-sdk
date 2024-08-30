@@ -36,7 +36,7 @@ Subsequently, the user wants to make another $8.99 purchase using the card on fi
 
 class OneClickWithCardHashTest(BaseTestCase):
     def get_test_name(self) -> str:
-        return "1CWCardHashTest"
+        return "CardHashTest"
 
     def test(self):
         # $9.99/month subscription

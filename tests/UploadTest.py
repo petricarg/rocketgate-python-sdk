@@ -38,6 +38,10 @@ class UploadTest(BaseTestCase):
 
         self.request.Set(GatewayRequest.MERCHANT_CUSTOMER_ID, "Customer-1")
 
+        self.request.Set(GatewayRequest.CARDNO, "4111111111111111")
+        self.request.Set(GatewayRequest.EXPIRE_MONTH, "12")
+        self.request.Set(GatewayRequest.EXPIRE_YEAR, "2012")
+
         self.request.Set(GatewayRequest.CUSTOMER_PASSWORD, "ThePassword")
 
         self.request.Set(GatewayRequest.BILLING_ADDRESS, "123 Main St")
@@ -47,7 +51,6 @@ class UploadTest(BaseTestCase):
         self.request.Set(GatewayRequest.BILLING_COUNTRY, "US")
 
         # Setup test parameters in the service
-        self.service.SetTestMode(True)
 
         # Perform the Purchase transaction
         self.assertTrue(self.service.PerformCardUpload(self.request, self.response), "Perform Card Upload")

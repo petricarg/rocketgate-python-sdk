@@ -45,9 +45,6 @@ class GenerateCrossSellTest(BaseTestCase):
         self.request.Set(GatewayRequest.CUSTOMER_PASSWORD, "pythontest_pass")
 
         # Risk/Scrub Request Setting
-        self.request.Set(GatewayRequest.SCRUB, "IGNORE")
-        self.request.Set(GatewayRequest.CVV2_CHECK, "IGNORE")
-        self.request.Set(GatewayRequest.AVS_CHECK, "IGNORE")
 
         # Perform the Purchase transaction
         self.assertTrue(
@@ -66,7 +63,6 @@ class GenerateCrossSellTest(BaseTestCase):
         request.Set(GatewayRequest.MERCHANT_PASSWORD, self.merchant_password)
 
         request.Set(GatewayRequest.MERCHANT_CUSTOMER_ID, self.customer_id)
-        request.Set(GatewayRequest.XSELL_REFERENCE_XACT, self.response.Get(GatewayResponse.TRANSACT_ID))
 
         # Different invoice id for xsell.
         request.Set(GatewayRequest.MERCHANT_INVOICE_ID, f"{int(time.time())}.TestGenerateXsell")

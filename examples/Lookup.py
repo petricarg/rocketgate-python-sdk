@@ -30,7 +30,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 from RocketGate import *
 
 # Setup required and testing variables
-time_now = time.time()
+time_now = int(time.time())
 cust_id = f"{time_now}.PythonTest"
 inv_id = f"{time_now}.LookupTest"
 merchant_id = "1"
@@ -59,7 +59,7 @@ request.Set(GatewayRequest.CVV2, "999")
 request.Set(GatewayRequest.CUSTOMER_FIRSTNAME, "Joe")
 request.Set(GatewayRequest.CUSTOMER_LASTNAME, "PythonTester")
 request.Set(GatewayRequest.EMAIL, "pythontest@fakedomain.com")
-request.Set(GatewayRequest.IPADDRESS, "127.0.0.1")
+
 request.Set(GatewayRequest.BILLING_ADDRESS, "123 Main St")
 request.Set(GatewayRequest.BILLING_CITY, "Las Vegas")
 request.Set(GatewayRequest.BILLING_STATE, "NV")

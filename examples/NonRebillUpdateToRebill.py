@@ -35,7 +35,7 @@ Subsequently, modify to a USD $19.95 monthly.. effective on it's next rebill dat
 """
 
 # Setup required and testing variables
-time_now = time.time()
+time_now = int(time.time())
 cust_id = f"{time_now}.PythonTest"
 inv_id = f"{time_now}.UpgrdToRebillTest"
 merchant_id = "1"

@@ -64,6 +64,7 @@ request.Set(GatewayRequest.BILLING_CITY, "Las Vegas")
 request.Set(GatewayRequest.BILLING_STATE, "NV")
 request.Set(GatewayRequest.BILLING_ZIPCODE, "89141")
 request.Set(GatewayRequest.BILLING_COUNTRY, "US")
+request.Set(GatewayRequest.MERCHANT_ACCOUNT, "59") # 3DS 1.0 MID.
 
 # Risk/Scrub Request Setting
 request.Set(GatewayRequest.SCRUB, "IGNORE")

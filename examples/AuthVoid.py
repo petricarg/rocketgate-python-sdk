@@ -30,10 +30,10 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 from RocketGate import *
 
 
-the_time = str(time.time())
+the_time = str(int(time.time()))
 
 cust_id = the_time + ".PythonTest"
-inv_id = the_time + ".VoidTest"
+inv_id = the_time + ".AuthVoidTest"
 merch_id = "1"
 merch_password = "testpassword"
 
@@ -58,15 +58,15 @@ request.Set(GatewayRequest.EXPIRE_MONTH, "02")
 request.Set(GatewayRequest.EXPIRE_YEAR, "2030")
 request.Set(GatewayRequest.CVV2, "999")
 
-request.Set(GatewayRequest.BILLING_ADDRESS, "123 Some Street")
+request.Set(GatewayRequest.BILLING_ADDRESS, "123 Main St")
 request.Set(GatewayRequest.BILLING_CITY, "Las Vegas")
-request.Set(GatewayRequest.BILLING_STATE, "Nevada")
+request.Set(GatewayRequest.BILLING_STATE, "NV")
 request.Set(GatewayRequest.BILLING_ZIPCODE, "89141")
 request.Set(GatewayRequest.BILLING_COUNTRY, "US")
 
 request.Set(GatewayRequest.CUSTOMER_FIRSTNAME, "Joe")
 request.Set(GatewayRequest.CUSTOMER_LASTNAME, "PythonTester")
-request.Set(GatewayRequest.EMAIL, "python_user@rocketgate.com")
+request.Set(GatewayRequest.EMAIL, "python_user@fakedomain.com")
 request.Set(GatewayRequest.IPADDRESS, "68.224.133.117")
 
 #
@@ -95,8 +95,7 @@ if status:
     print("AVS: ", response.Get(GatewayResponse.AVS_RESPONSE))
     print("CVV2: ", response.Get(GatewayResponse.CVV2_CODE))
     print("Card Hash: ", response.Get(GatewayResponse.CARD_HASH))
-    print("Card Region: ", response.Get(GatewayResponse.CARD_REGION))
-    print("Card Description: ", response.Get(GatewayResponse.CARD_DESCRIPTION))
+
     print("Account: ", response.Get(GatewayResponse.MERCHANT_ACCOUNT))
     print("Scrub: ", response.Get(GatewayResponse.SCRUB_RESULTS))
 else:
@@ -109,11 +108,8 @@ else:
     exit()
 
 #
-#	Setup the ticket transaction.
+#	Setup the void request.
 #
-request = GatewayRequest()
-request.Set(GatewayRequest.MERCHANT_ID, merch_id)
-request.Set(GatewayRequest.MERCHANT_PASSWORD, merch_password)
 request.Set(GatewayRequest.TRANSACT_ID, response.Get(GatewayResponse.TRANSACT_ID))
 
 #
@@ -125,7 +121,7 @@ if status:
     print("GUID: ", response.Get(GatewayResponse.TRANSACT_ID))
     print("Response Code: ", response.Get(GatewayResponse.RESPONSE_CODE))
     print("Reason Code: ", response.Get(GatewayResponse.REASON_CODE))
-    print("AuthNo: ", response.Get(GatewayResponse.AUTH_NO))
+
 else:
     print("Void failed")
     print("GUID: ", response.Get(GatewayResponse.TRANSACT_ID))

@@ -49,9 +49,6 @@ class PurchaseCreditTest(BaseTestCase):
         self.request.Set(GatewayRequest.CVV2_CHECK, "IGNORE")
         self.request.Set(GatewayRequest.AVS_CHECK, "IGNORE")
 
-        # Setup test parameters in the service and request
-        self.service.SetTestMode(True)
-
         # Perform the Purchase transaction
         self.assertTrue(
             self.service.PerformPurchase(self.request, self.response),

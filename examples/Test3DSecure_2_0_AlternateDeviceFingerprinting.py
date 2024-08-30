@@ -97,6 +97,7 @@ print("  Device Fingerprinting JWT:", response.Get(GatewayResponse._3DSECURE_DEV
 print("  Exception:", response.Get(GatewayResponse.EXCEPTION))
 
 # Recycle the first request and add new fields
+# request.Set(GatewayRequest._3DSECURE_DF_REFERENCE_ID, "fake")
 request.Set(GatewayRequest._3DSECURE_REDIRECT_URL, "fake")
 request.Set(GatewayRequest.BROWSER_JAVA_ENABLED, "TRUE")
 request.Set(GatewayRequest.BROWSER_LANGUAGE, "en-CA")
