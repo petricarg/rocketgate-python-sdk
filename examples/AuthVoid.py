@@ -107,7 +107,7 @@ else:
     print("Scrub: ", response.Get(GatewayResponse.SCRUB_RESULTS))
     exit()
 
-#   TODO Fix comment
+#
 #	Setup the void request.
 #
 request.Set(GatewayRequest.TRANSACT_ID, response.Get(GatewayResponse.TRANSACT_ID))

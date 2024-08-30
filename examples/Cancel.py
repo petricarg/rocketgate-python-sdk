@@ -121,7 +121,14 @@ if status:
 
     if status:
         print("Cancel succeeded")
-        # TODO missing code
+
+        if response.Get(GatewayResponse.REBILL_END_DATE) is None:
+            print("User is Active and Set to Rebill")
+            print("  Rebill Date: ", response.Get(GatewayResponse.REBILL_DATE))
+        else:
+            print("User is Active and Set to Cancel")
+            print("  Cancel Date: ", response.Get(GatewayResponse.REBILL_END_DATE))
+
     else:
         print("Cancel failed")
         print("Response Code: ", response.Get(GatewayResponse.RESPONSE_CODE))
