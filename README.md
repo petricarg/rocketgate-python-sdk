@@ -1,6 +1,6 @@
 ![rocketgate-python-sdk](http://rocketgate.com/images/logo_rocketgate.png)
 
-Rocketgate Gateway Python SDK
+RocketGate Gateway Python SDK
 ===========
 
 The Python 3.x Software Development Kit and Test Scripts
@@ -14,3 +14,9 @@ Docs related to this repository are located at:
 3. GatewayResponse: https://help.rocketgate.com/support/solutions/articles/28000018236-gatewayresponse
 4. GatewayResponse Error / Decline Codes: https://help.rocketgate.com/support/solutions/articles/28000018169-gatewayresponse-error-decline-codes
 
+
+## Running integration tests
+From the root of the project, using your installed Python Interpreter, run the following command:
+```shell
+python3 -m unittest discover ./tests -p '*.py'
+```
