@@ -25,7 +25,7 @@ whether or not advised of the possibility of damage, regardless of the theory of
 
 import sys
 import os
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from RocketGate import *
 
 """

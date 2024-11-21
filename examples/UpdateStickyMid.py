@@ -26,7 +26,7 @@ whether or not advised of the possibility of damage, regardless of the theory of
 import time
 import os
 import sys
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from RocketGate import *
 
 # Setup a couple required and testing variables
