@@ -32,7 +32,7 @@ from urllib.parse import urlsplit
 
 class GatewayRequest:
     VERSION_INDICATOR = "version"
-    VERSION_NUMBER = "PY3.7"
+    VERSION_NUMBER = "PY3.8"
 
     ######################################################################
     #
