@@ -1,0 +1,68 @@
+---
+name: Build & publish
+on: [push]
+jobs:
+
+  build:
+    name: Build wheel
+    # Only build wheel on tag pushes
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        persist-credentials: false
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.8"
+
+    - name: Install hatch
+      run: python3 -m pip install hatch --user
+
+    - name: Build
+      run: hatch build -t wheel
+
+    - name: Save wheel as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: python-package-distributions
+        path: dist/
+
+  publish:
+    name: Create GitHub release & publish to PyPI
+    # Only publish to PyPI on tag pushes
+    if: startsWith(github.ref, 'refs/tags/')
+    needs:
+    - build
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/RocketGate
+    permissions:
+      # Required to create GitHub release
+      contents: write
+      # Required to authenticate with PyPI
+      id-token: write
+
+    steps:
+    - name: Download wheel artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: python-package-distributions
+        path: dist/
+
+    - name: GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        body: ${{ github.event.workflow_run.head_commit.message }}
+        files: dist/RocketGate-${{ github.ref_name }}-py3-none-any.whl
+
+    - name: PyPI Release
+      uses: pypa/gh-action-pypi-publish@release/v1
+
+    # Note that when testing, we weren't able to delete a release from PyPI,
+    # then re-upload with the same version number. We must always publish
+    # a unique version, even if the previous version was deleted from PyPI.
