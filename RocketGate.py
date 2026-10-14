@@ -535,6 +535,7 @@ class GatewayService:
         #	Gather overrides for transaction.
         #
         connection = None
+        readingResponse = False
         urlServlet = request.Get(GatewayRequest.GATEWAY_SERVLET)
         urlPortNo = request.Get(GatewayRequest.GATEWAY_PORTNO)
 
@@ -590,9 +591,17 @@ class GatewayService:
         #	Create the HTTP handler and post our request.
         #
         try:
-            connection = http.client.HTTPSConnection(serverName, urlPortNo, timeout=connectTimeout)
+            if not hasattr(ssl, "create_default_context"):
+                raise ssl.SSLError("Certificate validation requires Python 3.4 or newer")
+            # Verify chain signatures, trust and validity dates before sending data.
+            context = ssl.create_default_context(purpose=ssl.Purpose.SERVER_AUTH)
+            context.verify_mode = ssl.CERT_REQUIRED
+            # Verify the certificate matches the endpoint hostname.
+            context.check_hostname = True
+            connection = http.client.HTTPSConnection(serverName, urlPortNo, timeout=connectTimeout, context=context)
             connection.request("POST", urlServlet, requestXML, headers)
             connection.sock.settimeout(readTimeout)
+            readingResponse = True
 
             #
             #	Read the response.
@@ -617,16 +626,16 @@ class GatewayService:
         except socket.timeout as ex:
             response.Set(GatewayResponse.EXCEPTION, str(ex))
             response.Set(GatewayResponse.RESPONSE_CODE, GatewayCodes.RESPONSE_SYSTEM_ERROR)
-            response.Set(GatewayResponse.REASON_CODE, GatewayCodes.REASON_UNABLE_TO_CONNECT)
+            response.Set(GatewayResponse.REASON_CODE, GatewayCodes.REASON_RESPONSE_READ_TIMEOUT if readingResponse else GatewayCodes.REASON_UNABLE_TO_CONNECT)
             return GatewayCodes.RESPONSE_SYSTEM_ERROR  # System error
 
         #
-        #	If the read timed out, return an error.
+        #	If the read timed out or certificate validation fails, return an error.
         #
-        except ssl.SSLError as ex:
+        except (ssl.SSLError, getattr(ssl, "CertificateError", ssl.SSLError)) as ex:
             response.Set(GatewayResponse.EXCEPTION, str(ex))
             response.Set(GatewayResponse.RESPONSE_CODE, GatewayCodes.RESPONSE_SYSTEM_ERROR)
-            response.Set(GatewayResponse.REASON_CODE, GatewayCodes.REASON_RESPONSE_READ_TIMEOUT)
+            response.Set(GatewayResponse.REASON_CODE, GatewayCodes.REASON_RESPONSE_READ_TIMEOUT if readingResponse and "timed out" in str(ex).lower() else GatewayCodes.REASON_ENCRYPTION_ERROR)
             return GatewayCodes.RESPONSE_SYSTEM_ERROR  # System error
 
         #
